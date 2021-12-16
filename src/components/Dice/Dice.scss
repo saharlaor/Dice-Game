@@ -1,0 +1,10 @@
+.Dice {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  img {
+    height: 15vmin;
+    width: 15vmin;
+    border: 1px solid #aaa;
+  }
+}

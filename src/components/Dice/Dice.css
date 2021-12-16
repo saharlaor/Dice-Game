@@ -1,0 +1,17 @@
+.Dice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 3vh;
+}
+
+.Dice img {
+  height: 15vmin;
+  width: 15vmin;
+  border: 1px solid #aaa;
+}
+/*# sourceMappingURL=Dice.css.map */
