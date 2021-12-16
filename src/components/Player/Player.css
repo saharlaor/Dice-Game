@@ -12,4 +12,8 @@
   gap: 10vh;
   height: 100%;
 }
+
+.Player__title {
+  font-size: 7.5vw;
+}
 /*# sourceMappingURL=Player.css.map */

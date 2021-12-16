@@ -15,6 +15,14 @@ class Game extends React.Component {
     };
   }
 
+  randomDie() {
+    return Math.ceil(Math.random() * 6);
+  }
+
+  rollDice() {
+    return [this.randomDie(), this.randomDie()];
+  }
+
   render() {
     return (
       <div id="Game">
@@ -26,7 +34,7 @@ class Game extends React.Component {
           isActive={this.state.currentPlayer === "player1" ? true : false}
           name="Player1"
         />
-        <Controls />
+        <Controls randomValues={this.rollDice()} />
         <Player
           totalScore={this.state.totalScore.player2}
           currentScore={
