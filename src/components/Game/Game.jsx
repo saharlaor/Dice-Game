@@ -21,16 +21,20 @@ class Game extends React.Component {
         <Player
           totalScore={this.state.totalScore.player1}
           currentScore={
-            this.state.currentPlayer === "player1" ? this.currentScore : 0
+            this.state.currentPlayer === "player1" ? this.state.currentScore : 0
           }
+          isActive={this.state.currentPlayer === "player1" ? true : false}
+          name="Player1"
         />
+        <Controls />
         <Player
           totalScore={this.state.totalScore.player2}
           currentScore={
-            this.state.currentPlayer === "player2" ? this.currentScore : 0
+            this.state.currentPlayer === "player2" ? this.state.currentScore : 0
           }
+          isActive={this.state.currentPlayer === "player2" ? true : false}
+          name="Player2"
         />
-        <Controls />
       </div>
     );
   }
