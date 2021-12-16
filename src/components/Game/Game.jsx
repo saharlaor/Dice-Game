@@ -23,6 +23,21 @@ class Game extends React.Component {
     return [this.randomDie(), this.randomDie()];
   }
 
+  handleNewGameClick() {
+    console.log("handleNewGameClick");
+    return;
+  }
+
+  handleRollDiceClick() {
+    console.log("handleRollDiceClick");
+    return;
+  }
+
+  handleHoldClick() {
+    console.log("handleHoldClick");
+    return;
+  }
+
   render() {
     return (
       <div id="Game">
@@ -34,7 +49,12 @@ class Game extends React.Component {
           isActive={this.state.currentPlayer === "player1" ? true : false}
           name="Player1"
         />
-        <Controls randomValues={this.rollDice()} />
+        <Controls
+          randomValues={this.rollDice()}
+          handleNewGameClick={this.handleNewGameClick}
+          handleRollDiceClick={this.handleRollDiceClick}
+          handleHoldClick={this.handleHoldClick}
+        />
         <Player
           totalScore={this.state.totalScore.player2}
           currentScore={

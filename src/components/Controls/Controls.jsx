@@ -5,10 +5,10 @@ import "./Controls.css";
 const Controls = (props) => {
   return (
     <div className="Controls">
-      <button>New Game</button>
+      <button onClick={props.handleNewGameClick}>New Game</button>
       <Dice values={props.randomValues} />
-      <button>New Game</button>
-      <button>New Game</button>
+      <button onClick={props.handleRollDiceClick}>Roll Dice</button>
+      <button onClick={props.handleHoldClick}>Hold</button>
     </div>
   );
 };
