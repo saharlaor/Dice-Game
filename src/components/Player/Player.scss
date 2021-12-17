@@ -1,11 +1,13 @@
 $inactive-color: #777;
 $inactive-background: #ddd;
+$winner-color: #d55;
 
 .Player {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10vh;
+  position: relative;
   height: 100%;
   flex-grow: 1;
   &.inactive {
@@ -15,6 +17,16 @@ $inactive-background: #ddd;
   }
   & > * {
     color: inherit;
+  }
+  &.winner {
+    color: $winner-color;
+    &::after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: url(../../assets/img/fireworks.gif) no-repeat 0 20% / contain;
+    }
   }
 }
 
@@ -34,12 +46,12 @@ $inactive-background: #ddd;
   }
 }
 .Player__current-score {
-  font-size: 5vw;
+  font-size: 3.5vw;
   &::before {
     padding-bottom: 1.5vw;
     content: "Current Score";
     display: block;
-    font-size: 4vw;
+    font-size: 3vw;
     font-weight: 500;
   }
 }

@@ -7,10 +7,10 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerNames: { player1: "Player1", player2: "Player2" },
+      playerNames: { player1: "player1", player2: "player2" },
       totalScore: { player1: 0, player2: 0 },
       currentScore: 0,
-      currentPlayer: "Player1",
+      currentPlayer: "player1",
       dice: [0, 0],
       winningScore: 100,
       isWon: false,
@@ -25,16 +25,17 @@ class Game extends React.Component {
     return [this.randomDie(), this.randomDie()];
   }
 
-  checkWin = (score) => {
-    return score <= this.state.winningScore;
+  checkWin = (player, score) => {
+    console.log(player, score, score <= this.state.winningScore);
+    return score >= this.state.winningScore;
   };
 
   handleNewGameClick = () => {
     this.setState({
-      playerNames: { player1: "Player1", player2: "Player2" },
+      playerNames: { player1: "player1", player2: "player2" },
       totalScore: { player1: 0, player2: 0 },
       currentScore: 0,
-      currentPlayer: "Player1",
+      currentPlayer: "player1",
       dice: [0, 0],
       winningScore: 100,
       isWon: false,
@@ -59,36 +60,40 @@ class Game extends React.Component {
   };
 
   handleHoldClick = () => {
-    console.log("handleHoldClick");
-    this.setState(({ totalScore, currentScore, currentPlayer }) => {
-      const newTotal = { ...totalScore };
-      newTotal[currentPlayer] += currentScore;
-      const isWon = this.checkWin(currentPlayer, newTotal[currentPlayer]);
-      return {
-        totalScore: newTotal,
-        currentScore: 0,
-        currentPlayer:
-          currentPlayer === this.state.playerNames.player1
-            ? this.state.playerNames.player2
-            : this.state.playerNames.player1,
-        isWon: isWon,
-      };
-    });
+    this.setState(
+      ({ playerNames, totalScore, currentScore, currentPlayer }) => {
+        const newState = {};
+        const newTotal = { ...totalScore };
+        newTotal[currentPlayer] += currentScore;
+        newState.totalScore = newTotal;
+        newState.playerNames = playerNames;
+        newState.currentScore = 0;
+        if (this.checkWin(currentPlayer, newTotal[currentPlayer])) {
+          newState.playerNames[currentPlayer] = "Winner";
+          newState.isWon = true;
+          newState.currentPlayer = newState.playerNames[currentPlayer];
+        } else {
+          newState.currentPlayer =
+            currentPlayer === this.state.playerNames.player1
+              ? this.state.playerNames.player2
+              : this.state.playerNames.player1;
+        }
+        return newState;
+      }
+    );
   };
 
   render() {
-    console.log(this.state.currentPlayer === this.state.playerNames.player2);
+    const isPlayer1Active =
+      this.state.currentPlayer === this.state.playerNames.player1;
     return (
       <div id="Game">
         <Player
-          totalScore={this.state.totalScore.player1}
-          currentScore={
-            this.state.currentPlayer === this.state.playerNames.player1
-              ? this.state.currentScore
-              : 0
-          }
-          isActive={this.state.currentPlayer === this.state.playerNames.player1}
           name={this.state.playerNames.player1}
+          totalScore={this.state.totalScore.player1}
+          currentScore={isPlayer1Active ? this.state.currentScore : 0}
+          isActive={isPlayer1Active}
+          isWinner={this.state.isWon && isPlayer1Active}
         />
         <Controls
           randomValues={this.state.dice}
@@ -97,14 +102,11 @@ class Game extends React.Component {
           handleHoldClick={this.handleHoldClick}
         />
         <Player
-          totalScore={this.state.totalScore.player2}
-          currentScore={
-            this.state.currentPlayer === this.state.playerNames.player2
-              ? this.state.currentScore
-              : 0
-          }
-          isActive={this.state.currentPlayer === this.state.playerNames.player2}
           name={this.state.playerNames.player2}
+          totalScore={this.state.totalScore.player2}
+          currentScore={!isPlayer1Active ? this.state.currentScore : 0}
+          isActive={!isPlayer1Active}
+          isWinner={this.state.isWon && !isPlayer1Active}
         />
       </div>
     );

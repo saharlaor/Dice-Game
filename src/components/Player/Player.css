@@ -10,6 +10,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   gap: 10vh;
+  position: relative;
   height: 100%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -24,6 +25,18 @@
 
 .Player > * {
   color: inherit;
+}
+
+.Player.winner {
+  color: #d55;
+}
+
+.Player.winner::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: url(../../assets/img/fireworks.gif) no-repeat 0 20%/contain;
 }
 
 .Player__title {
@@ -44,14 +57,14 @@
 }
 
 .Player__current-score {
-  font-size: 5vw;
+  font-size: 3.5vw;
 }
 
 .Player__current-score::before {
   padding-bottom: 1.5vw;
   content: "Current Score";
   display: block;
-  font-size: 4vw;
+  font-size: 3vw;
   font-weight: 500;
 }
 /*# sourceMappingURL=Player.css.map */
