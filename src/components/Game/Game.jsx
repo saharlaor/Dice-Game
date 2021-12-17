@@ -24,15 +24,29 @@ class Game extends React.Component {
     return [this.randomDie(), this.randomDie()];
   }
 
-  handleNewGameClick() {
+  checkWin = (player, score) => {
+    return score <= this.state.winningScore;
+  };
+
+  handleNewGameClick = () => {
     console.log("handleNewGameClick");
     return;
-  }
+  };
 
-  handleRollDiceClick() {
-    console.log("handleRollDiceClick");
-    return;
-  }
+  handleRollDiceClick = () => {
+    const newState = { dice: this.rollDice() };
+    const diceSum = newState.dice.reduce((acc, value) => acc + value);
+    if (diceSum === 12) {
+      newState["currentPlayer"] =
+        this.state.currentPlayer === "player1" ? "player2" : "player1";
+      newState["currentScore"] = 0;
+    } else {
+      newState["currentScore"] =
+        this.state.currentScore +
+        newState.dice.reduce((acc, value) => acc + value);
+    }
+    this.setState(newState);
+  };
 
   handleHoldClick = () => {
     console.log("handleHoldClick");
