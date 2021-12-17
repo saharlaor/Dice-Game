@@ -12,6 +12,7 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 3vw;
+  background-color: #d55;
 }
 
 .Controls button {
@@ -22,7 +23,7 @@
 }
 
 .Controls button:hover {
-  color: #555;
+  color: #eee;
   cursor: pointer;
 }
 /*# sourceMappingURL=Controls.css.map */

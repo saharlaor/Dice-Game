@@ -10,6 +10,7 @@ $winner-color: #d55;
   position: relative;
   height: 100%;
   flex-grow: 1;
+  padding: 5vh;
   &.inactive {
     background-color: $inactive-background;
     color: $inactive-color;

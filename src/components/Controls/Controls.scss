@@ -1,17 +1,20 @@
+$primary-color: #d55;
+$secondary-color: #eee;
+
 .Controls {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   padding: 3vw;
-
+  background-color: $primary-color;
   button {
     border: none;
     background: none;
     font-family: inherit;
     font-size: 2.5vw;
     &:hover {
-      color: #555;
+      color: $secondary-color;
       cursor: pointer;
     }
   }
