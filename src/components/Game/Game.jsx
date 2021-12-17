@@ -10,6 +10,7 @@ class Game extends React.Component {
       totalScore: { player1: 0, player2: 0 },
       currentScore: 0,
       currentPlayer: "player1",
+      dice: [0, 0],
       winningScore: 100,
       isWon: false,
     };
@@ -50,7 +51,7 @@ class Game extends React.Component {
           name="Player1"
         />
         <Controls
-          randomValues={this.rollDice()}
+          randomValues={this.state.dice}
           handleNewGameClick={this.handleNewGameClick}
           handleRollDiceClick={this.handleRollDiceClick}
           handleHoldClick={this.handleHoldClick}
