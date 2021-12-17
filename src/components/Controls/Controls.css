@@ -13,4 +13,16 @@
           align-items: center;
   padding: 1rem;
 }
+
+.Controls button {
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 2.5vw;
+}
+
+.Controls button:hover {
+  color: #555;
+  cursor: pointer;
+}
 /*# sourceMappingURL=Controls.css.map */

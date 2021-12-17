@@ -20,7 +20,11 @@ const Dice = (props) => {
   };
 
   const diceEls = props.values.map((val, i) => (
-    <img key={`dice-${i}`} src={diceImage[val]} alt={`dice-${val}`}></img>
+    <img
+      key={`dice-${i}`}
+      src={diceImage[val]}
+      alt={`dice-${val}`}
+      style={val ? { boxShadow: "0 0 10px 5px #ccc" } : {}}></img>
   ));
   return <div className="Dice">{diceEls}</div>;
 };

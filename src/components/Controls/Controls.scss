@@ -4,4 +4,15 @@
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
+
+  button {
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: 2.5vw;
+    &:hover {
+      color: #555;
+      cursor: pointer;
+    }
+  }
 }
