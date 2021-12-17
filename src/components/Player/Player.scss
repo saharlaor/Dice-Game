@@ -59,7 +59,7 @@ $winner-color: #d55;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 500px), (max-height: 500px) {
   .Player {
     gap: 3vh;
   }
