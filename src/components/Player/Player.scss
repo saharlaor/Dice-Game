@@ -22,3 +22,24 @@ $inactive-background: #ddd;
   position: relative;
   font-size: 7.5vw;
 }
+
+.Player__total-score {
+  font-size: 5vw;
+  &::before {
+    padding-bottom: 1.5vw;
+    content: "Total Score";
+    display: block;
+    font-size: 4vw;
+    font-weight: 500;
+  }
+}
+.Player__current-score {
+  font-size: 5vw;
+  &::before {
+    padding-bottom: 1.5vw;
+    content: "Current Score";
+    display: block;
+    font-size: 4vw;
+    font-weight: 500;
+  }
+}
