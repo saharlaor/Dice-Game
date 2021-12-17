@@ -1,11 +1,24 @@
+$inactive-color: #777;
+$inactive-background: #ddd;
+
 .Player {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10vh;
   height: 100%;
+  flex-grow: 1;
+  &.inactive {
+    background-color: $inactive-background;
+    color: $inactive-color;
+    opacity: 0.8;
+  }
+  & > * {
+    color: inherit;
+  }
 }
 
 .Player__title {
+  position: relative;
   font-size: 7.5vw;
 }

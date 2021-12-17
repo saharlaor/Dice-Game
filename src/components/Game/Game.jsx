@@ -7,6 +7,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      playerNames: { player1: "player1", player2: "player2" },
       totalScore: { player1: 0, player2: 0 },
       currentScore: 0,
       currentPlayer: "player1",
@@ -38,7 +39,9 @@ class Game extends React.Component {
     const diceSum = newState.dice.reduce((acc, value) => acc + value);
     if (diceSum === 12) {
       newState["currentPlayer"] =
-        this.state.currentPlayer === "player1" ? "player2" : "player1";
+        this.state.currentPlayer === this.state.playerNames.player1
+          ? this.state.playerNames.player2
+          : this.state.playerNames.player1;
       newState["currentScore"] = 0;
     } else {
       newState["currentScore"] =
@@ -57,22 +60,28 @@ class Game extends React.Component {
       return {
         totalScore: newTotal,
         currentScore: 0,
-        currentPlayer: currentPlayer === "player1" ? "player2" : "player1",
+        currentPlayer:
+          currentPlayer === this.state.playerNames.player1
+            ? this.state.playerNames.player2
+            : this.state.playerNames.player1,
         isWon: isWon,
       };
     });
   };
 
   render() {
+    console.log(this.state.currentPlayer === this.state.playerNames.player2);
     return (
       <div id="Game">
         <Player
           totalScore={this.state.totalScore.player1}
           currentScore={
-            this.state.currentPlayer === "player1" ? this.state.currentScore : 0
+            this.state.currentPlayer === this.state.playerNames.player1
+              ? this.state.currentScore
+              : 0
           }
-          isActive={this.state.currentPlayer === "player1" ? true : false}
-          name="Player1"
+          isActive={this.state.currentPlayer === this.state.playerNames.player1}
+          name={this.state.playerNames.player1}
         />
         <Controls
           randomValues={this.state.dice}
@@ -83,10 +92,12 @@ class Game extends React.Component {
         <Player
           totalScore={this.state.totalScore.player2}
           currentScore={
-            this.state.currentPlayer === "player2" ? this.state.currentScore : 0
+            this.state.currentPlayer === this.state.playerNames.player2
+              ? this.state.currentScore
+              : 0
           }
-          isActive={this.state.currentPlayer === "player2" ? true : false}
-          name="Player2"
+          isActive={this.state.currentPlayer === this.state.playerNames.player2}
+          name={this.state.playerNames.player2}
         />
       </div>
     );

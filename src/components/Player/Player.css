@@ -11,9 +11,23 @@
           justify-content: center;
   gap: 10vh;
   height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.Player.inactive {
+  background-color: #ddd;
+  color: #777;
+  opacity: 0.8;
+}
+
+.Player > * {
+  color: inherit;
 }
 
 .Player__title {
+  position: relative;
   font-size: 7.5vw;
 }
 /*# sourceMappingURL=Player.css.map */
