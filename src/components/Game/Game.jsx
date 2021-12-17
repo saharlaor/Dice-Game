@@ -98,8 +98,10 @@ class Game extends React.Component {
         <Controls
           randomValues={this.state.dice}
           handleNewGameClick={this.handleNewGameClick}
-          handleRollDiceClick={this.handleRollDiceClick}
-          handleHoldClick={this.handleHoldClick}
+          handleRollDiceClick={
+            !this.state.isWon ? this.handleRollDiceClick : null
+          }
+          handleHoldClick={!this.state.isWon ? this.handleHoldClick : null}
         />
         <Player
           name={this.state.playerNames.player2}
