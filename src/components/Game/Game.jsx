@@ -7,10 +7,10 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerNames: { player1: "player1", player2: "player2" },
+      playerNames: { player1: "Player1", player2: "Player2" },
       totalScore: { player1: 0, player2: 0 },
       currentScore: 0,
-      currentPlayer: "player1",
+      currentPlayer: "Player1",
       dice: [0, 0],
       winningScore: 100,
       isWon: false,
@@ -31,10 +31,10 @@ class Game extends React.Component {
 
   handleNewGameClick = () => {
     this.setState({
-      playerNames: { player1: "player1", player2: "player2" },
+      playerNames: { player1: "Player1", player2: "Player2" },
       totalScore: { player1: 0, player2: 0 },
       currentScore: 0,
-      currentPlayer: "player1",
+      currentPlayer: "Player1",
       dice: [0, 0],
       winningScore: 100,
       isWon: false,
