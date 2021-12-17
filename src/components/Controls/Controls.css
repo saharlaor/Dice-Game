@@ -15,15 +15,41 @@
   background-color: #d55;
 }
 
+.Controls .Controls__play-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 33vh;
+}
+
 .Controls button {
   border: none;
   background: none;
   font-family: inherit;
   font-size: 2.5vw;
+  padding: 0.5rem;
 }
 
 .Controls button:hover {
   color: #eee;
   cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .Controls {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .Controls .Controls__play-buttons {
+    height: 100%;
+  }
 }
 /*# sourceMappingURL=Controls.css.map */

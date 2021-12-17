@@ -24,6 +24,8 @@ $winner-color: #d55;
     &::after {
       content: "";
       position: absolute;
+      top: 0;
+      left: 0;
       height: 100%;
       width: 100%;
       background: url(../../assets/img/fireworks.gif) no-repeat 0 20% / contain;
@@ -54,5 +56,11 @@ $winner-color: #d55;
     display: block;
     font-size: 3vw;
     font-weight: 500;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Player {
+    gap: 3vh;
   }
 }

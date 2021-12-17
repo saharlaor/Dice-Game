@@ -8,4 +8,13 @@
   height: 100%;
   width: 100%;
 }
+
+@media screen and (max-width: 500px) {
+  #Game {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
 /*# sourceMappingURL=Game.css.map */

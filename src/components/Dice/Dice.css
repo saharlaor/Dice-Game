@@ -13,4 +13,13 @@
   height: 15vmin;
   width: 15vmin;
 }
+
+@media screen and (max-width: 500px) {
+  .Dice {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
 /*# sourceMappingURL=Dice.css.map */
