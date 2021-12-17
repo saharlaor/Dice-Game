@@ -34,10 +34,20 @@ class Game extends React.Component {
     return;
   }
 
-  handleHoldClick() {
+  handleHoldClick = () => {
     console.log("handleHoldClick");
-    return;
-  }
+    this.setState(({ totalScore, currentScore, currentPlayer }) => {
+      const newTotal = { ...totalScore };
+      newTotal[currentPlayer] += currentScore;
+      const isWon = this.checkWin(currentPlayer, newTotal[currentPlayer]);
+      return {
+        totalScore: newTotal,
+        currentScore: 0,
+        currentPlayer: currentPlayer === "player1" ? "player2" : "player1",
+        isWon: isWon,
+      };
+    });
+  };
 
   render() {
     return (
