@@ -1,0 +1,25 @@
+.Button {
+  line-height: 2.5vw;
+}
+
+.Button > button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 2.5vw;
+  padding: 0.75rem;
+}
+
+.Button > button:hover {
+  color: #eee;
+  cursor: pointer;
+}
+
+.Button > button > img {
+  height: 2.5vw;
+  margin-right: 0.5rem;
+}
+/*# sourceMappingURL=Button.css.map */

@@ -1,12 +1,16 @@
 import React from "react";
 import Dice from "../Dice/Dice";
+import Button from "../Button/Button";
 import { Howl, Howler } from "howler";
-import DiceRoll1 from "../../assets/audio/dice-roll1.mp3";
-import DiceRoll2 from "../../assets/audio/dice-roll2.mp3";
-import DiceRoll3 from "../../assets/audio/dice-roll3.mp3";
+import DiceRollSound1 from "../../assets/audio/dice-roll1.mp3";
+import DiceRollSound2 from "../../assets/audio/dice-roll2.mp3";
+import DiceRollSound3 from "../../assets/audio/dice-roll3.mp3";
+import ResetIcon from "../../assets/img/reset-icon.png";
+import RollDiceIcon from "../../assets/img/roll-dice-icon.png";
+import HoldIcon from "../../assets/img/hold-icon.png";
 import "./Controls.css";
 
-const SOUNDS = [DiceRoll1, DiceRoll2, DiceRoll3].map(
+const SOUNDS = [DiceRollSound1, DiceRollSound2, DiceRollSound3].map(
   (sound) => new Howl({ src: sound })
 );
 
@@ -19,13 +23,23 @@ const handleRollDiceClick = (handler) => {
 const Controls = (props) => {
   return (
     <div className="Controls">
-      <button onClick={props.handleNewGameClick}>New Game</button>
+      <Button
+        handleClick={props.handleNewGameClick}
+        icon={ResetIcon}
+        text="New Game"
+      />
       <Dice values={props.randomValues} />
       <div className="Controls__play-buttons">
-        <button onClick={() => handleRollDiceClick(props.handleRollDiceClick)}>
-          Roll Dice
-        </button>
-        <button onClick={props.handleHoldClick}>Hold</button>
+        <Button
+          handleClick={() => handleRollDiceClick(props.handleRollDiceClick)}
+          icon={RollDiceIcon}
+          text="Roll Dice"
+        />
+        <Button
+          handleClick={props.handleHoldClick}
+          icon={HoldIcon}
+          text="Hold"
+        />
       </div>
     </div>
   );

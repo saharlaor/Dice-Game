@@ -12,6 +12,7 @@
 .Dice img {
   height: 15vmin;
   width: 15vmin;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 500px) {
