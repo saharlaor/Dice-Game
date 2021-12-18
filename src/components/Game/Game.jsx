@@ -1,6 +1,9 @@
 import React from "react";
 import Controls from "../Controls/Controls";
 import Player from "../Player/Player";
+import { Howl, Howler } from "howler";
+import Fireworks from "../../assets/audio/fireworks.mp3";
+import Victory from "../../assets/audio/victory.mp3";
 import "./Game.css";
 
 class Game extends React.Component {
@@ -17,6 +20,7 @@ class Game extends React.Component {
     };
   }
 
+  // Util methods
   randomDie() {
     return Math.ceil(Math.random() * 6);
   }
@@ -25,12 +29,29 @@ class Game extends React.Component {
     return [this.randomDie(), this.randomDie()];
   }
 
-  checkWin = (player, score) => {
-    console.log(player, score, score <= this.state.winningScore);
+  checkWin = (score) => {
     return score >= this.state.winningScore;
   };
 
+  victorySounds() {
+    Howler.volume(0.3);
+    const victory = new Howl({ src: Victory });
+    const fireworks = new Howl({ src: Fireworks });
+
+    victory.play();
+    const fireworksInterval = setInterval(() => {
+      fireworks.play();
+    }, 3000);
+    setTimeout(() => {
+      console.log("Clearing fireworks");
+      clearInterval(fireworksInterval);
+    }, 12000);
+  }
+
+  // Handler methods
   handleNewGameClick = () => {
+    console.log(this.state.audioInterval);
+    clearInterval(this.state.audioInterval);
     this.setState({
       playerNames: { player1: "player1", player2: "player2" },
       totalScore: { player1: 0, player2: 0 },
@@ -68,10 +89,11 @@ class Game extends React.Component {
         newState.totalScore = newTotal;
         newState.playerNames = playerNames;
         newState.currentScore = 0;
-        if (this.checkWin(currentPlayer, newTotal[currentPlayer])) {
+        if (this.checkWin(newTotal[currentPlayer])) {
           newState.playerNames[currentPlayer] = "Winner";
           newState.isWon = true;
           newState.currentPlayer = newState.playerNames[currentPlayer];
+          this.victorySounds();
         } else {
           newState.currentPlayer =
             currentPlayer === this.state.playerNames.player1
