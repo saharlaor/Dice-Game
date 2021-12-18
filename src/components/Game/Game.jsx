@@ -17,6 +17,10 @@ class Game extends React.Component {
       dice: [0, 0],
       winningScore: 100,
       isWon: false,
+      sounds: {
+        victory: new Howl({ src: Victory }),
+        fireworks: new Howl({ src: Fireworks, loop: true }),
+      },
     };
   }
 
@@ -35,23 +39,18 @@ class Game extends React.Component {
 
   victorySounds() {
     Howler.volume(0.3);
-    const victory = new Howl({ src: Victory });
-    const fireworks = new Howl({ src: Fireworks });
 
-    victory.play();
-    const fireworksInterval = setInterval(() => {
-      fireworks.play();
-    }, 3000);
+    this.state.sounds.victory.play();
+    this.state.sounds.fireworks.play();
     setTimeout(() => {
-      console.log("Clearing fireworks");
-      clearInterval(fireworksInterval);
+      this.state.sounds.fireworks.stop();
     }, 12000);
   }
 
   // Handler methods
   handleNewGameClick = () => {
-    console.log(this.state.audioInterval);
-    clearInterval(this.state.audioInterval);
+    this.state.sounds.victory.stop();
+    this.state.sounds.fireworks.stop();
     this.setState({
       playerNames: { player1: "player1", player2: "player2" },
       totalScore: { player1: 0, player2: 0 },
